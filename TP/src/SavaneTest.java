@@ -105,10 +105,10 @@ public class SavaneTest implements TP1Stats {
 
 	// cycles start
 	
-        for( annee = 0; annee < nombreAnnees; annee++ ) {
+    	for( annee = 0; annee < nombreAnnees; annee++ ) {
 	    savane.vieillir();   // ----- LA SAVANE VIEILLIT -----
 	    savane.chasser();    // ----- LA SAVANE CHASSE -----
-	    savane.reproduire(); // ----- LA SAVANE PROCRÉE -----
+	    savane.reproduire(); // ----- LA SAVANE PROCRï¿½E -----
 	    // debugging-output
             if( show && ( annee + 1 ) < this.nombreAnnees ) {
 				if(lecture(myReader,stats( annee, show ))){
@@ -182,22 +182,22 @@ public class SavaneTest implements TP1Stats {
 	    }
 	}
 	
-	String indice = "ème";
-	if( annee == 1 ) indice = "ière";
+	String indice = "ï¿½me";
+	if( annee == 1 ) indice = "iï¿½re";
 	
         if( show ) {
-	    print( "///////////////////////////// à la fin de la " + annee + indice + " année, nous observons :" );
+	    print( "///////////////////////////// ï¿½ la fin de la " + annee + indice + " annï¿½e, nous observons :" );
             print( nombreLions + " lions total ;" );
             print( nombreVieuxLions + " lions qui vont mourrir de vieillesse ;" );
 	    print( nombreLionsMatures + " lions matures ;" );
             print( nombreJeunesLions + " lions juvenils ;" );
-            print( nombreBebesLions + " bébés lions ;" );
+            print( nombreBebesLions + " bï¿½bï¿½s lions ;" );
             print( masseTotaleLions + " masse en lions ;" );
 	    print( nombreAntilopes + " antilopes total ;" );
             print( nombreVieillesAntilopes + " antilopes qui vont mourrir de vieillesse ;" );
 	    print( nombreAntilopesMatures + " antilopes matures ;" );
             print( nombreJeunesAntilopes + " antilopes juveniles ;" );
-            print( nombreBebesAntilopes + " bébés antilopes ; et" );
+            print( nombreBebesAntilopes + " bï¿½bï¿½s antilopes ; et" );
             print( masseTotaleAntilopes + " masse en antilopes." );
         }
         

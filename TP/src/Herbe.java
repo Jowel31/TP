@@ -1,17 +1,17 @@
 // Fichier :     Herbe.java
-// Création:     2022.03.03
+// Creation:     2022.03.03
 // Auteur :      francois.major@umontreal.ca
 //
-// Ce code n'est pas protégé par un copyright.
+// Ce code n'est pas protege par un copyright.
 // 
 // Historique :
-//  Créé pour le cours IFT1025 H22
+//  Creee pour le cours IFT1025 H22
 //
 
 /**
    class Herbe
 
-   @author <A HREF="mailto:francois.major@umontreal.ca">François Major</A>
+   @author <A HREF="mailto:francois.major@umontreal.ca">Francois Major</A>
    @version $Revision: 1.0 $ $Date: 2022/03/03 $
    @see 
 **/
@@ -45,4 +45,8 @@ public class Herbe {
         this.masseAnnuelle = this.masse * 0.6; // backup herb of 60% of the current mass
     }
     public String toString() { return "[" + this.getMasse() + " d'herbe]"; }
+    
+	public double getMasseAnnuelle() {
+		return this.masseAnnuelle;
+	}
 }
