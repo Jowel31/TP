@@ -26,9 +26,9 @@ import java.util.Random;
 public class Population implements EcoSysteme, Iterable<Animal> {
 
 	private Herbe herbe;
-	private ArrayList<Animal> individus = new ArrayList<>();
-	
-	
+	private ArrayList<Animal> individus = new ArrayList<Animal>();
+
+
 	// Constructeur
 	public Population( Herbe herbe, ArrayList<Animal> proies, ArrayList<Animal> predateurs ) {
 
@@ -48,7 +48,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	///////////////
 	//  Getters  //
 	///////////////
-	
+
 	public ArrayList<Animal> getIndividus(){
 		return this.individus;
 	}
@@ -118,129 +118,135 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 	@Override
 	public double masseProies() {
-		
-		
+
+
 		double masse = 0;
 
 		for (Animal animal : individus) {
 
 			if (animal.estProie()) { masse += animal.getMasse(); }
 		}
-		
+
 		return masse;
 	}
 
 	@Override
 	public double massePredateurs() {
-		
+
 		double masse = 0;
 
 		for (Animal animal : individus) {
 
 			if (animal.estPredateur()) { masse += animal.getMasse(); }
 		}
-		
+
 		return masse;
 	}
 
 	///////////////
 	//  Actions  //
 	///////////////
-	
+
 	// Fait vieillir d'une annee tous les animaux.
 	@Override
 	public void vieillir() {
 
 		herbe.vieillir(); 
 		individus.forEach( animal -> { animal.vieillir(); } );
+
+		retirerMorts();
 	}
 
-	// Nourris les proies d'herbe et nourris les predateurs de proies.
+	// Fait chasser les animaux.
 	@Override
 	public void chasser() {
 
-		melanger(); // melanger la liste individus
+		melanger();
 
-		int nProiesChassables = getNombreProiesChassables(); // nombre de proies restantes
-		double masseHerbe     = herbe.getMasseAnnuelle();    // masse d'herbe restante
+		double masseHerbe          = herbe.getMasseAnnuelle();
+		int nombreProiesChassables = getNombreProiesChassables();
 
-		Iterator<Animal> it = iterator();
+		// Faire manger chaque animal
+		for (int i = 0; i < individus.size(); i++) {
 
-		// On fait manger chaque animal.
-		while (it.hasNext()) {
+			Animal animal = individus.get(i);
 
-			Animal animal = it.next();
+			if (!animal.estVivant()) continue; // Les animaux morts ne chassent pas.
 
-			if (animal.estVivant()) {
+			double masseAnimal = animal.getMasse();
 
-				// Les proies mangent de l'herbe et les predateurs mangent leurs proies
-				if (animal.estProie()) { masseHerbe        = mangeHerbe(animal, masseHerbe); } 
-				else                   { nProiesChassables = mangeProie(animal, nProiesChassables); }
-				
-			}
-		}
-		
-	}
+			if (animal.estProie()) { // Manger de l'herbe
 
-	// Prend en parametre un animal. et lui fait manger de l'herbe pour 2 fois sa masse.
-	// Retourne la masse d'herbe restante
-	private double mangeHerbe(Animal animal, double masseHerbe) {
+				if (masseHerbe >= masseAnimal * 2) {
+					masseHerbe -= masseAnimal * 2;
+					animal.manger();
 
-		double masseAnimal = animal.getMasse();
-		
-		if (masseHerbe >= masseAnimal * 2) { // Assez d'herbe pour nourrir l'antilope
-
-			masseHerbe -= masseAnimal * 2;
-			animal.manger();
-
-		} else { animal.mourir(); }
-
-		return masseHerbe;
-	}
-
-	// Prend en parametre un predateur. Lui fait manger des proies pour 2 fois sa masse.
-	// Retourne le nombre de proies restante.
-	private int mangeProie(Animal predateur, int nProiesChassables) {
+				} else animal.mourir();
 
 
-		Iterator<Animal> itProies = iterator(); // itere aux travers des animaux a manger
+			} else { // Manger des proies
 
-		double masseAnimal = predateur.getMasse();
-		double masseMangee = 0;
+				Animal proie;
+				double masseMangee = 0;
 
-		while (nProiesChassables > 0) {
+				for (int j = 0; j < individus.size(); j++) { // Parcourir les animaux a manger
 
-			Animal proie = itProies.next();
+					if (nombreProiesChassables == 0) { animal.mourir(); break; } // toutes les proies ont ete mangees
 
-			if (proie.estProie() && proie.estVivant()) { // l'animal est mangeable
-				
-				masseMangee += proie.getMasse();
-				proie.mourir();
-				
-				nProiesChassables --;
+					proie = individus.get(j);
 
-				if(masseMangee >= masseAnimal * 2) { // Le predateur est nourrit
-					predateur.manger();
-					break;
+					if (proie.estProie() && proie.estVivant()) { // proie mangeable
+						masseMangee += proie.getMasse();
+						proie.mourir();
+						nombreProiesChassables --;
+
+						individus.set(j, proie);
+					}
+
+					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // animal nourrit
 				}
 			}
 
+			individus.set(i, animal); // Mettre a jour l'animal.
+
 		}
-		
-		return nProiesChassables;
+
+		retirerMorts();
 	}
 
+	// Fait accoucher un bebe par couple d'animaux.
 	// Fait accoucher les femelles des proies et des predateurs
 	@Override
 	public void reproduire() {
-		
-		int couplesProiesMatures     = getNombreProiesMatures() / 2;
-		int couplesPredateursMatures = getNombrePredateursMatures() / 2;
-		
-		for(Animal animal : individus) {
-			
+
+		int couplesProies     = getNombreProiesMatures() / 2;
+		int couplesPredateurs = getNombrePredateursMatures() / 2;
+
+		Animal bebe;
+
+		for (Animal animal : individus) {
+
+			if (animal.estPredateur() && animal.estMature()) {
+				bebe = animal.accoucher();
+				individus.add(bebe);
+				couplesPredateurs --;
+
+				if (couplesPredateurs == 0) break;
+			}
+		}
+		for (Animal animal : individus) {
+
+			if (animal.estProie() && animal.estMature()) {
+				bebe = animal.accoucher();
+				individus.add(bebe);
+				couplesProies --;
+
+				if (couplesProies == 0) break;
+			}
 		}
 	}
+	
+	// Melange la liste d'individus.
 
 	// Melange la liste d'animaux.
 	@Override
@@ -248,5 +254,13 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		Collections.shuffle(this.individus, new Random(4));
 	}
 
+
+	// Retire les animaux morts de la liste d'individus.
+	private void retirerMorts() {
+
+		individus.forEach( animal -> { 
+			if (!animal.estVivant()) individus.remove(animal); 
+		});
+	}
 
 }
