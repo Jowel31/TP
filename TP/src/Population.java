@@ -22,7 +22,6 @@ import java.util.Random;
 
 
 // Definis une population d'herbe et d'animaux (proies et predateurs), iterable.
-
 public class Population implements EcoSysteme, Iterable<Animal> {
 
 	private Herbe herbe;
