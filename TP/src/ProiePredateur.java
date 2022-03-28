@@ -1,5 +1,5 @@
 // Fichier :     ProiePredateur.java
-// CrÃ©ation:     2022.03.03
+// Creation:     2022.03.03
 // Auteur :      francois.major@umontreal.ca
 //
 // Ce code n'est pas protégé par un copyright.
