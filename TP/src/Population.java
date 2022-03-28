@@ -33,25 +33,28 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		this.herbe = herbe;
 
-		this.individus.addAll(proies);
-		this.individus.addAll(predateurs);
+		individus.addAll(proies);
+		individus.addAll(predateurs);
 
-	}
-
-	// Retourne un iterator de la liste individus.
-	@Override
-	public Iterator<Animal> iterator() {	
-		return this.individus.iterator();
+		retirerMorts();
 	}
 
 	///////////////
 	//  Getters  //
 	///////////////
 
+	// Retourne un iterator de la liste individus.
+	@Override
+	public Iterator<Animal> iterator() {	
+		return individus.iterator();
+	}
+	
+	// Retourne la liste d'individus
 	public ArrayList<Animal> getIndividus(){
-		return this.individus;
+		return individus;
 	}
 
+	// Retourne le nombre total de proies.
 	@Override
 	public int getNombreProies() {
 
@@ -65,6 +68,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		return count;
 	}
 
+	// Retourne le nombre total de predateurs.
 	@Override
 	public int getNombrePredateurs() {
 
@@ -80,6 +84,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		return count;
 	}
 
+	// Retourne le nombre de proies matures
 	@Override
 	public int getNombreProiesMatures() {
 
@@ -95,6 +100,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		return count;
 	}
 
+	// Retourne le nombre de predateurs matures
 	@Override
 	public int getNombrePredateursMatures() {
 
@@ -110,14 +116,15 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		return count;
 	}
 
+	// Retourne le nombre de proies chassables
 	@Override
 	public int getNombreProiesChassables() {
-		return (int) (getNombreProies() * 0.2);
+		return getNombreProies() / 5;
 	}
 
+	// Retourne la masse totale des proies
 	@Override
 	public double masseProies() {
-
 
 		double masse = 0;
 
@@ -129,6 +136,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		return masse;
 	}
 
+	// Retourne la masse totale des predateurs
 	@Override
 	public double massePredateurs() {
 
@@ -185,14 +193,14 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 			} else { // Manger des proies
 
-				Animal proie;
+
 				double masseMangee = 0;
 
 				for (int j = 0; j < individus.size(); j++) { // Parcourir les animaux a manger
 
 					if (nombreProiesChassables == 0) { animal.mourir(); break; } // toutes les proies ont ete mangees
 
-					proie = individus.get(j);
+					Animal proie = individus.get(j);
 
 					if (proie.estProie() && proie.estVivant()) { // proie mangeable
 						masseMangee += proie.getMasse();
@@ -202,7 +210,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 						individus.set(j, proie);
 					}
 
-					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // animal nourrit
+					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // animal a finit de manger
 				}
 			}
 
@@ -214,45 +222,35 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	}
 
 	// Fait accoucher un bebe par couple d'animaux.
-	// Fait accoucher les femelles des proies et des predateurs
 	@Override
 	public void reproduire() {
 
 		int couplesProies     = getNombreProiesMatures() / 2;
 		int couplesPredateurs = getNombrePredateursMatures() / 2;
 
-		Animal bebe;
 
 		for (Animal animal : individus) {
 
-			if (animal.estPredateur() && animal.estMature()) {
-				bebe = animal.accoucher();
-				individus.add(bebe);
-				couplesPredateurs --;
+			if (animal.estMature()) {
+				
+				if (animal.estPredateur() && couplesPredateurs > 0) { // Le predateur peut se reproduire					
+					individus.add(animal.accoucher());
+					couplesPredateurs--;
 
-				if (couplesPredateurs == 0) break;
-			}
-		}
-		for (Animal animal : individus) {
-
-			if (animal.estProie() && animal.estMature()) {
-				bebe = animal.accoucher();
-				individus.add(bebe);
-				couplesProies --;
-
-				if (couplesProies == 0) break;
+				} else if (animal.estProie() && couplesProies > 0)  { // La proie peut se reproduire
+					individus.add(animal.accoucher());
+					couplesPredateurs--;
+				}
+				
 			}
 		}
 	}
 	
 	// Melange la liste d'individus.
-
-	// Melange la liste d'animaux.
 	@Override
 	public void melanger() { 
 		Collections.shuffle(this.individus, new Random(4));
 	}
-
 
 	// Retire les animaux morts de la liste d'individus.
 	private void retirerMorts() {

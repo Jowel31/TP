@@ -1,11 +1,11 @@
 // Fichier :     Animal.java
-// Création:     
+// Creation:     
 // Auteurs :      
 //
-// Ce code n'est pas protégé par un copyright.
+// Ce code n'est pas protege par un copyright.
 // 
 // Historique :
-//  Créé pour le cours IFT1025 H22
+//  Cree pour le cours IFT1025 H22
 //
 
 /**
@@ -17,8 +17,5 @@
     // TO BE COMPLETED //
 
 class Animal implements ProiePredateur {
-    public static void main(String[] args) {
-        ProiePredateur relationPP = new ProiePredateur();
-        System.out.println(myObj.x);
-    }
+	
 }
