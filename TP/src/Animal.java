@@ -24,6 +24,7 @@ public class Animal implements ProiePredateur {
 		this.setAge(0);
 		this.setMasse(10);
 		
+		
 		/*
 		if (animal.estPredateur()) {
 			
@@ -37,13 +38,14 @@ public class Animal implements ProiePredateur {
 		
 	}
 	
-	
+	@Override
 	public void vieillir(); {// animal is getting one year older
 		
 		this.age += 1;
 		
 	}
 	
+	@Override
     public void manger(); {// animal eats
     	
     	if (this.estPredateur()) {
@@ -57,12 +59,14 @@ public class Animal implements ProiePredateur {
 			}
     	}
     }
-
+    
+    @Override
     public Animal accoucher(); {// animal delivers
     	
     	//add un animal dans la liste d'individus?
     }
     
+    @Override
     public void mourir() {// animal dies
     	this.estVivant() = false
     }
@@ -71,14 +75,17 @@ public class Animal implements ProiePredateur {
     	return true
     }
     
+    @Override
     public boolean estMature() {// animal is mature
     	return true
     }
     
+    @Override
     public void setProie( boolean proie ) {// set animal mode to prey
     	this.proie = proie;
     }
     
+    @Override
     public boolean estProie() {// animal is a prey
     	if(this.proie)//if true return true?
     		return true;
@@ -86,10 +93,12 @@ public class Animal implements ProiePredateur {
     		return false;
     }
     
+    @Override
     public void setPredateur( boolean predateur ) {// set animal mode to predator
     	this.predateur = predateur;
     }
     
+    @Override
     public boolean estPredateur() {// animal is a predator
     	if (this.predateur)
     		return true;
@@ -97,27 +106,44 @@ public class Animal implements ProiePredateur {
     		return false;
     }
     
-    public double getMasse() {// get animal's mass
-    	return this.masse
-    }
-    public void setMasse( double masse ) {// set animal's mass
+    
+    
+    // setter, getter de la masse de l'animal
+    
+    @Override
+    public void setMasse( double masse ) {// modifier la masse del'animal
     	this.masse = masse;
     }
     
-    public void setAge( int age ) {// set animal's age
+    @Override
+    public double getMasse() {// retourne la masse de l'animal
+    	return this.masse;
+    }
+    
+    
+    // setter, getter de l'age de l'animal
+    
+    @Override
+    public void setAge( int age ) {// modifier l'age de l'animal
     	this.age = age;
     }
     
-    public int getAge() {// get animal's age
+    @Override
+    public int getAge() {// retourne l'age de l'animal
     	return this.age;
     }
     
-    public int getAgeMax() {// get animal's maximum age
-    	return this.ageMax;
+    
+    // getters de l'age mature et de l'age maximum de l'animal
+    
+    @Override
+    public int getAgeMature() {// retourne l'age de maturite de l'animal
+    	return this.ageMature;
     }
     
-    public int getAgeMature() {// get animal's mature age
-    	return this.ageMature;
+    @Override
+    public int getAgeMax() {// retourne l'age maximum de l'animal
+    	return this.ageMax;
     }
 	
 }
