@@ -93,7 +93,7 @@ public class Savane implements TP1Stats {
         for( annee = 0; annee < nombreAnnees; annee++ ) {
 	    savane.vieillir();   // ----- LA SAVANE VIEILLIT -----
 	    savane.chasser();    // ----- LA SAVANE CHASSE -----
-	    savane.reproduire(); // ----- LA SAVANE PROCRÉE -----
+	    savane.reproduire(); // ----- LA SAVANE PROCREE -----
 	    // debugging-output
             if( show && ( annee + 1 ) < this.nombreAnnees ) stats( annee + 1, show );
         }
