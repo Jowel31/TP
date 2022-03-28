@@ -24,7 +24,7 @@ class Antilope extends Animal {
 	
 	
 	public Antilope(double facteurCroissanceAntilopes) {
-		//super(facteurCroissanceAntilopes);
+		//super(facteurCroissanceAntilopes); 
 		//super.setProie(true);
 		//super.setAGEMAX(AGE_MAX);
 	}
