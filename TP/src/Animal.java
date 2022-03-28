@@ -21,12 +21,11 @@ public class Animal implements ProiePredateur {
 	@Override
 	public void naitre(); {// animal becomes alive
 		
-		animal.getAge();
-		animal.getMasse();
-		animal.setAge(0);
-		animal.setMasse(10);
+		this.setAge(0);
+		this.setMasse(10);
 		
-		if (animal.estProie()) {
+		/*
+		if (animal.estPredateur()) {
 			
 			nombreLions += 1;
 		}
@@ -34,42 +33,58 @@ public class Animal implements ProiePredateur {
 		else (animal.estProie()) {
 			
 			nombreAntilopes += 1;
-		}
+		}*/
 		
 	}
 	
 	
 	public void vieillir(); {// animal is getting one year older
 		
-		animal.setAge() += 1;
+		this.age += 1;
 		
 	}
 	
-	
     public void manger(); {// animal eats
     	
-    	//aucune idee qoui faire//
-    
+    	if (this.estPredateur()) {
+    		
+    		for (Animal animal : individus) {
+
+    			if (animal.estProie()) {
+    				
+    				animal.mourir();
+    			}
+			}
+    	}
     }
 
     public Animal accoucher(); {// animal delivers
     	
+    	//add un animal dans la liste d'individus?
     }
-    public void mourir(); // animal dies
-    public boolean estVivant(); // animal is alive
-    public boolean estMature(); // animal is mature
+    
+    public void mourir() {// animal dies
+    	this.estVivant() = false
+    }
+    
+    public boolean estVivant() {// animal is alive
+    	return true
+    }
+    
+    public boolean estMature() {// animal is mature
+    	return true
+    }
     
     public void setProie( boolean proie ) {// set animal mode to prey
     	this.proie = proie;
     }
     
     public boolean estProie() {// animal is a prey
-    	if(this.proie)
+    	if(this.proie)//if true return true?
     		return true;
     	else
     		return false;
     }
-    
     
     public void setPredateur( boolean predateur ) {// set animal mode to predator
     	this.predateur = predateur;
