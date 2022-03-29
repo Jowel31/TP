@@ -1,11 +1,11 @@
 // Fichier :     Antilope.java
-// Création:     
+// Crï¿½ation:     
 // Auteurs :     
 //
-// Ce code n'est pas protégé par un copyright.
+// Ce code n'est pas protï¿½gï¿½ par un copyright.
 // 
 // Historique :
-//  Créé pour le cours IFT1025 H22
+//  Crï¿½ï¿½ pour le cours IFT1025 H22
 //
 
 /**
@@ -16,10 +16,22 @@
 
     // TO BE COMPLETED //
 
-class Antilope extends Animal {
-	
+/*class Antilope extends Animal {
+
 	private int ageMature = 2;
 	private int ageMax = 15;
 	private double facteurCroissanceAntilopes;
 	
-}
+	private final static int AGE_MAX = 15;
+	private final static int AGE_MATURE = 2;
+	private double tauxCroissance;
+
+	
+	
+	public Antilope(double facteurCroissanceAntilopes) {
+		//super(facteurCroissanceAntilopes); 
+		//super.setProie(true);
+		//super.setAGEMAX(AGE_MAX);
+	}
+	
+}*/
