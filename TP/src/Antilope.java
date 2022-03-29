@@ -20,6 +20,6 @@ class Antilope extends Animal {
 	
 	private int ageMature = 2;
 	private int ageMax = 15;
-	private double tauxCroissance;
+	private double facteurCroissanceAntilopes;
 	
 }
