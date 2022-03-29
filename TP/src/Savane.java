@@ -82,9 +82,6 @@ public class Savane implements TP1Stats {
 	savane = new Population( herbe, proies, predateurs );
     }
 
-    // Savane getter
-    public Population getSavane() { return savane; }
-
     // the cycle of life simulation for the number of years
     public double[] simule() {
 	// the order of event is important
@@ -96,7 +93,7 @@ public class Savane implements TP1Stats {
         for( annee = 0; annee < nombreAnnees; annee++ ) {
 	    savane.vieillir();   // ----- LA SAVANE VIEILLIT -----
 	    savane.chasser();    // ----- LA SAVANE CHASSE -----
-	    savane.reproduire(); // ----- LA SAVANE PROCRÃ‰E -----
+	    savane.reproduire(); // ----- LA SAVANE PROCREE -----
 	    // debugging-output
             if( show && ( annee + 1 ) < this.nombreAnnees ) stats( annee + 1, show );
         }
@@ -140,22 +137,22 @@ public class Savane implements TP1Stats {
 	    }
 	}
 	
-	String indice = "Ã¨me";
-	if( annee == 1 ) indice = "iÃ¨re";
+	String indice = "ème";
+	if( annee == 1 ) indice = "ière";
 	
         if( show ) {
-	    print( "///////////////////////////// Ã€ la fin de la " + annee + indice + " annÃ©e, nous observons :" );
+	    print( "///////////////////////////// à la fin de la " + annee + indice + " année, nous observons :" );
             print( nombreLions + " lions total ;" );
             print( nombreVieuxLions + " lions qui vont mourrir de vieillesse ;" );
 	    print( nombreLionsMatures + " lions matures ;" );
             print( nombreJeunesLions + " lions juvenils ;" );
-            print( nombreBebesLions + " bÃ©bÃ©s lions ;" );
+            print( nombreBebesLions + " bébés lions ;" );
             print( masseTotaleLions + " masse en lions ;" );
 	    print( nombreAntilopes + " antilopes total ;" );
             print( nombreVieillesAntilopes + " antilopes qui vont mourrir de vieillesse ;" );
 	    print( nombreAntilopesMatures + " antilopes matures ;" );
             print( nombreJeunesAntilopes + " antilopes juveniles ;" );
-            print( nombreBebesAntilopes + " bÃ©bÃ©s antilopes ; et" );
+            print( nombreBebesAntilopes + " bébés antilopes ; et" );
             print( masseTotaleAntilopes + " masse en antilopes." );
         }
         

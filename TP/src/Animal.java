@@ -1,11 +1,11 @@
 // Fichier :     Animal.java
-// Creation:     
-// Auteurs :      
+// Création:     
+// Auteurs :      Paul Loignon
 //
-// Ce code n'est pas protege par un copyright.
+// Ce code n'est pas protégé par un copyright.
 // 
 // Historique :
-//  Cree pour le cours IFT1025 H22
+//  Créé pour le cours IFT1025 H22
 //
 
 /**
@@ -18,45 +18,33 @@
 
 public class Animal implements ProiePredateur {
 	
-	@Override
-	public void naitre() {// animal becomes alive
+	int age;
+	int masse;
+	boolean estVivant;
+	
+	public Animal() {
 		
-		this.setAge(0);
-		this.setMasse(10);
 		
-		
-		/*
-		if (animal.estPredateur()) {
+		// L'animal prend vie et recoit un age initial et une masse initiale
+		@Override
+		public void naitre() {
 			
-			nombreLions += 1;
+			this.setAge(0);
+			this.setMasse(10);
+			this.estVivant = true;
 		}
 		
-		else (animal.estProie()) {
+		
+		// L'animal viellit d'un an
+		@Override
+		public void vieillir() {
 			
-			nombreAntilopes += 1;
-		}*/
-		
-	}
-	
-	@Override
-	public void vieillir() {// animal is getting one year older
-		
-		//this.age += 1;
-		
-	}
-	
-	@Override
-    public void manger() {// animal eats
-    	
-    	if (this.estPredateur()) {
-    		
-    			for (Animal animal : individus) {
-
-    			if (animal.estProie()) {
-    				
-    				animal.mourir();
-    			}
+			this.age += 1;
+			
+			if (this.age > this.AGEMAX) {
+				this.mourir();
 			}
+<<<<<<< HEAD
     	}
     }
     
@@ -145,5 +133,148 @@ public class Animal implements ProiePredateur {
     public int getAgeMax() {// retourne l'age maximum de l'animal
     	return this.ageMax;
     }
+=======
+		}
+		
+		
+		
+		
+		
+		
+		// L'animal mange
+		@Override
+	    public void manger() {
+	    	
+	    	
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	    // L'animal donne naissance
+	    @Override
+	    public Animal accoucher() {
+	    	
+	    	if (this.estProie) {
+	    		Antilope animal = new Antilope();
+	    		
+	    	} else {
+	    		Lion animal = new Lion();
+	    	}
+	    	
+	    	animal.naitre();
+	    	
+	    	return animal;
+	    }
+	    
+	    
+	    // L'animal meurt
+	    @Override
+	    public void mourir() {
+	    	
+	    	this.estVivant = false;
+	    }
+	    
+	    
+	    // L'animal est vivant?
+	    public boolean estVivant() {
+	    	
+	    	return this.estVivant;
+	    }
+	    
+	    
+	    // L'animal est mature?
+	    @Override
+	    public boolean estMature() {
+	    	
+	    	if (this.age >= this.ageMature) {
+	    		return true;
+	    		
+	    	} else {
+	    		return false;
+	    	}
+	    }
+	    
+	    
+	    // Definir l'animal comme etant une proie
+	    @Override
+	    public void setProie( boolean proie ) {
+	    	
+	    	this.estProie = proie;
+	    }
+	    
+	    
+	    // L'animal est une proie?
+	    @Override
+	    public boolean estProie() {
+	    	
+	    	return this.estProie;
+	    }
+	    
+	    
+	    // Definir l'animal comme etant un predateur
+	    @Override
+	    public void setPredateur( boolean predateur ) {
+	    	
+	    	this.estPredateur = predateur;
+	    }
+	    
+	    
+	    // L'animal est un predateur?
+	    @Override
+	    public boolean estPredateur() {
+	    	
+	    	return this.estPredateur;
+	    }
+	    
+	    
+	    // setter, getter de la masse de l'animal
+	    
+	    @Override
+	    public void setMasse( double masse ) {
+	    	
+	    	this.masse = masse;
+	    }
+	    
+	    @Override
+	    public double getMasse() {
+	    	
+	    	return this.masse;
+	    }
+	    
+	    
+	    // setter, getter de l'age de l'animal
+	    
+	    @Override
+	    public void setAge( int age ) {
+	    	
+	    	this.age = age;
+	    }
+	    
+	    @Override
+	    public int getAge() {
+	    	
+	    	return this.age;
+	    }
+	    
+	    
+	    // getters de l'age mature et de l'age maximum de l'animal
+	    
+	    @Override
+	    public int getAgeMature() {
+	    	
+	    	return this.ageMature;
+	    }
+	    
+	    @Override
+	    public int getAgeMax() {
+	    	
+	    	return this.AGEMAX;
+	    }
+	    
+	}
+>>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
 	
 }
