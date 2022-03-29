@@ -72,12 +72,12 @@ public class Animal implements ProiePredateur {
     }
     
     public boolean estVivant() {// animal is alive
-    	return true
+    	return true;
     }
     
     @Override
     public boolean estMature() {// animal is mature
-    	return true
+    	return true;
     }
     
     @Override
@@ -145,6 +145,5 @@ public class Animal implements ProiePredateur {
     public int getAgeMax() {// retourne l'age maximum de l'animal
     	return this.ageMax;
     }
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
 	
 }
