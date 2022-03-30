@@ -18,12 +18,13 @@
 
 public class Animal implements ProiePredateur {
 	
-	int age;
-	int masse;
+	private int age;
+	private int masse;
 	boolean estVivant;
 	
-	public Animal() {
-		
+	
+	public Animal {
+	}
 		
 		// L'animal prend vie et recoit un age initial et une masse initiale
 		@Override
@@ -41,9 +42,11 @@ public class Animal implements ProiePredateur {
 			
 			this.age += 1;
 			
-			if (this.age > this.AGEMAX) {
+			if (this.age > this.ageMax) {
 				this.mourir();
 			}
+			
+			
 		}
 		
 		
@@ -181,9 +184,8 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public int getAgeMax() {
 	    	
-	    	return this.AGEMAX;
+	    	return this.ageMax;
 	    }
 	    
 	}
 	
-}
