@@ -22,15 +22,22 @@ public class Animal implements ProiePredateur {
 	private double masse;
 	private boolean estVivant;
 	private double facteurCroissance;
-	private int AGE_MAX;
-	private int AGE_MATURE;
+	private int ageMax;
+	private int ageMature;
 	private boolean estProie;
 	private boolean estPredateur;
 	
 	
-	public Animal(double facteurCroissance) {
+	public Animal(double facteurCroissance, int ageMature, int ageMax) {
+		
+		naitre();
+		this.facteurCroissance = facteurCroissance;
+		this.ageMature = ageMature;
+		this.ageMax = ageMax;
 	}
 		
+	
+	
 		// L'animal prend vie et recoit un age initial et une masse initiale
 		@Override
 		public void naitre() {
@@ -47,7 +54,7 @@ public class Animal implements ProiePredateur {
 			
 			age += 1;
 			
-			if (age > AGE_MAX) {
+			if (age > ageMax) {
 				mourir();
 			}
 			
@@ -64,19 +71,10 @@ public class Animal implements ProiePredateur {
 	    
 		
 	    // L'animal donne naissance
+		
 	    @Override
 	    public Animal accoucher() {
-	    	
-	    	if (this.estProie) {
-	    		Antilope animal = new Antilope();
-	    		
-	    	} else {
-	    		Lion animal = new Lion();
-	    	}
-	    	
-	    	animal.naitre();
-	    	
-	    	return animal;
+	    	return new Animal(facteurCroissance, ageMature, ageMax);
 	    }
 	    
 	    
@@ -100,7 +98,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public boolean estMature() {
 	    	
-	    	return age >= AGE_MATURE;
+	    	return age >= ageMature;
 	    }
 	    
 	    
@@ -171,13 +169,13 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public int getAgeMature() {
 	    	
-	    	return AGE_MATURE;
+	    	return ageMature;
 	    }
 	    
 	    @Override
 	    public int getAgeMax() {
 	    	
-	    	return AGE_MAX;
+	    	return ageMax;
 	    }
 	    
 }

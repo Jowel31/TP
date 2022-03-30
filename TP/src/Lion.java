@@ -11,14 +11,21 @@
 
 class Lion extends Animal {
 	
-	private final static int AGE_MAX = 50;
-	private final static int AGE_MATURE = 5;
+	private double facteurCroissanceLion;
+	public final static int AGEMAX = 50;
+	public final static int AGEMATURE = 5;
 	
-	public Lion( double facteurCroissanceLions ) {
+	public Lion( double facteurCroissanceLion ) {
 		
-		super (facteurCroissanceLions);
-		super.setPredateur(true);
-		super.setProie(false);
+		super(facteurCroissanceLion, AGEMATURE, AGEMAX);
+		
+		this.facteurCroissanceLion = facteurCroissanceLion;
+		setPredateur(true);
+		setProie(false);
 	}
 	
-}
+	@Override
+	public Animal accoucher() {
+		return new Lion(facteurCroissanceLion);
+	}
+	
