@@ -11,14 +11,25 @@
 
 class Antilope extends Animal {
 
-	private final static int AGE_MAX = 15;
-	private final static int AGE_MATURE = 2;
+	public final static int AGEMAX    = 15;
+	public final static int AGEMATURE = 2;
 
-	public Antilope( double facteurCroissanceAntilopes ) {
+	private double facteurCroissanceAntilope;
+	
+	
+	public Antilope( double facteurCroissanceAntilope ) {
 		
-		super (facteurCroissanceAntilopes);
-		super.setProie(true);
-		super.setPredateur(false);
+		super(facteurCroissanceAntilope, AGEMATURE, AGEMAX);
+		this.facteurCroissanceAntilope = facteurCroissanceAntilope;
+		
+		setProie(true); setPredateur(false);
+		
+	}
+	
+	@Override
+	public Animal accoucher() {
+		return new Antilope(facteurCroissanceAntilope);
+
 	}
 	
 }

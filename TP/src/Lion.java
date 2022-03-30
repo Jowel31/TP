@@ -28,4 +28,5 @@ class Lion extends Animal {
 	public Animal accoucher() {
 		return new Lion(facteurCroissanceLion);
 	}
+}
 	
