@@ -202,11 +202,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 						individus.set(j, proie); // Mettre a jour la proie
 					}
 
-<<<<<<< HEAD
 					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // l'animal a finit de manger
-=======
-					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // animal nourrit
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
 				}
 			}
 
@@ -250,8 +246,6 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	}
 	
 	// Melange la liste d'individus.
-
-	// Melange la liste d'animaux.
 	@Override
 	public void melanger() { 
 		Collections.shuffle(this.individus, new Random(4));
