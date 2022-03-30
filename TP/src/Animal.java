@@ -171,7 +171,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public int getAgeMature() {
 	    	
-	    	return ageMature;
+	    	return AGE_MATURE;
 	    }
 	    
 	    @Override
