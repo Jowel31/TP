@@ -1,41 +1,43 @@
 // Fichier :     Animal.java
-// Création:     
-// Auteurs :      Paul Loignon
+// Creation:     30 mars 2022
+// Auteurs :     Paul Loignon
 //
-// Ce code n'est pas protégé par un copyright.
+// Ce code n'est pas protege par un copyright.
 // 
 // Historique :
-//  Créé pour le cours IFT1025 H22
+//  Cree pour le cours IFT1025 H22
 //
 
-/**
-   class Animal
-    implements the Prey/Predator relationship
 
-**/
- 
-    // TO BE COMPLETED //
+// La classe Animal implemente les methodes de l'interface ProiePredateur 
+// pour representer le comportement general d'un animal.
 
-public class Animal implements ProiePredateur {
+// Abstraite, car l'instanciation d'un animal general n'a pas de sens. 
+public abstract class Animal implements ProiePredateur {
 	
+	
+	// Variables
 	private int age;
-	private double masse;
-	private boolean estVivant;
-	private double facteurCroissance;
-	private int ageMax;
 	private int ageMature;
+	private int ageMax;
+	private double masse;
+	private double facteurCroissance;
+	private boolean estVivant;
 	private boolean estProie;
 	private boolean estPredateur;
 	
 	
+	// Constructeur
 	public Animal(double facteurCroissance, int ageMature, int ageMax) {
 		
 		naitre();
+		
+		// Association des attributs
 		this.facteurCroissance = facteurCroissance;
 		this.ageMature = ageMature;
 		this.ageMax = ageMax;
-	}
 		
+	}
 	
 	
 		// L'animal prend vie et recoit un age initial et une masse initiale
@@ -45,10 +47,12 @@ public class Animal implements ProiePredateur {
 			setAge(0);
 			setMasse(10);
 			estVivant = true;
+			
 		}
 		
 		
-		// L'animal viellit d'un an
+		// L'animal viellit d'un an et meurt s'il depasse son age maximum.
+		// La masse augmente aussi lors du vieillissement.
 		@Override
 		public void vieillir() {
 			
@@ -59,124 +63,122 @@ public class Animal implements ProiePredateur {
 			}
 			
 			masse *= facteurCroissance;
+			
 		}
-		
-		
-		// L'animal mange
-		@Override
-	    public void manger() {
-	    	
-	    	
-	    }
-	    
-		
-	    // L'animal donne naissance
-		
-	    @Override
-	    public Animal accoucher() {
-	    	return new Animal(facteurCroissance, ageMature, ageMax);
-	    }
 	    
 	    
-	    // L'animal meurt
+	    // L'animal meurt donc il n'est plus vivant
 	    @Override
 	    public void mourir() {
-	    	
 	    	estVivant = false;
-	    }
-	    
-	    
-	    @Override
-	    // L'animal est vivant?
-	    public boolean estVivant() {
 	    	
-	    	return estVivant;
 	    }
 	    
 	    
-	    // L'animal est mature?
+	    // Retourne un booleen pour savoir si l'animal est vivant
+	    @Override
+	    public boolean estVivant() {
+	    	return estVivant;
+	    	
+	    }
+	    
+	    
+	    // Retourne un booleen pour savoir si l'animal est mature
 	    @Override
 	    public boolean estMature() {
-	    	
 	    	return age >= ageMature;
+	    	
 	    }
 	    
 	    
-	    // Definir l'animal comme etant une proie
+	    // Donne un attribut booleen qui definit si c'est une proie ou non
 	    @Override
 	    public void setProie( boolean proie ) {
-	    	
 	    	estProie = proie;
+	    	
 	    }
 	    
 	    
-	    // L'animal est une proie?
+	    // Retourne un booleen pour savoir si l'animal est une proie
 	    @Override
 	    public boolean estProie() {
-	    	
 	    	return estProie;
+	    	
 	    }
 	    
 	    
-	    // Definir l'animal comme etant un predateur
+	    // Donne un attribut booleen qui definit si c'est un predateur ou non
 	    @Override
 	    public void setPredateur( boolean predateur ) {
-	    	
 	    	estPredateur = predateur;
+	    	
 	    }
 	    
 	    
-	    // L'animal est un predateur?
+	    // Retourne un booleen pour savoir si l'animal est un predateur
 	    @Override
 	    public boolean estPredateur() {
-	    	
 	    	return estPredateur;
+	    	
 	    }
 	    
 	    
-	    // setter, getter de la masse de l'animal
+	    // Setter, Getter de la masse de l'animal
 	    
 	    @Override
 	    public void setMasse( double masse ) {
-	    	
 	    	this.masse = masse;
+	    	
 	    }
 	    
 	    @Override
 	    public double getMasse() {
-	    	
 	    	return masse;
+	    	
 	    }
 	    
 	    
-	    // setter, getter de l'age de l'animal
+	    // Setter, Getter de l'age de l'animal
 	    
 	    @Override
 	    public void setAge( int age ) {
-	    	
 	    	this.age = age;
+	    	
 	    }
 	    
 	    @Override
 	    public int getAge() {
-	    	
 	    	return age;
+	    	
 	    }
 	    
 	    
-	    // getters de l'age mature et de l'age maximum de l'animal
+	    // Getters de l'age mature et de l'age maximum de l'animal
 	    
 	    @Override
 	    public int getAgeMature() {
-	    	
 	    	return ageMature;
+	    	
 	    }
 	    
 	    @Override
 	    public int getAgeMax() {
-	    	
 	    	return ageMax;
+	    	
 	    }
 	    
+	    
+	    // Ce n'est pas pertinent qu'un animal accouche, car il
+	    // faut creer des objets qui sont soient des antilopes, soient des lions
+	    @Override
+	    public abstract Animal accoucher();
+	    
+	    
+	    // L'animal mange
+	 	@Override
+	 	public void manger() {
+	 	    // ...
+	 		
+	 	}
+	    
 }
-	
