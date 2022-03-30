@@ -72,7 +72,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		for (Animal animal : individus) {
 
-			if (animal.estProie()) count ++;
+			if (animal.estPredateur()) count ++;
 		}
 
 		return count;

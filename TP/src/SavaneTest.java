@@ -94,7 +94,7 @@ public class SavaneTest implements TP1Stats {
 		int annee=0;
 
 		try {
-			File myObj = new File("src/savaneTest1.txt");
+			File myObj = new File("savaneTest1.txt");
 			Scanner myReader = new Scanner(myObj);
 
 

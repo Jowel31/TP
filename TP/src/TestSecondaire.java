@@ -4,13 +4,13 @@ public class TestSecondaire {
     public static void main(String[] args){
         /*
         if(true){
-            System.out.println("échec du test : ");
+            System.out.println("ï¿½chec du test : ");
             nT++;
         }
         totalTest++;
         */
         System.out.println("////////////////////////////////////////////////////////////////////////////////////////////////////");
-        System.out.println("Fichier Animal/Lion/Antilope sauf manger() et accoucher(). Il n'y aura pas de test caché pour cette partie. \n");
+        System.out.println("Fichier Animal/Lion/Antilope sauf manger() et accoucher(). Il n'y aura pas de test cachï¿½ pour cette partie. \n");
         int totalTest=0;
         int nT=0;
         //0.0
@@ -18,7 +18,7 @@ public class TestSecondaire {
         Animal test = new Lion(1.1);
         test.vieillir();
         if((test.getAge()!=1 || test.getMasse() != 11 || !test.estVivant())){
-            System.out.println("échec du test 0.0 : L:Animal.vieillir() 1 ans");
+            System.out.println("ï¿½chec du test 0.0 : L:Animal.vieillir() 1 ans");
             nT++;
         }
         totalTest++;
@@ -28,7 +28,7 @@ public class TestSecondaire {
             test.vieillir();
         }
         if(test.getAge()!=50 || test.getMasse() != (Math.pow(1.1,(50))*10) || !test.estVivant()){
-            System.out.println("échec du test 0.1 : L:Animal.vieillir() 50 ans");
+            System.out.println("ï¿½chec du test 0.1 : L:Animal.vieillir() 50 ans");
             nT++;
         }
         totalTest++;
@@ -36,7 +36,7 @@ public class TestSecondaire {
         //0.2
         test.vieillir();
         if(test.getAge()!=51 || test.getMasse() == (Math.pow(1.1,(test.getAge()))*10) || test.estVivant()){
-            System.out.println("échec du test 0.2 : L:Animal.vieillir() too Old");
+            System.out.println("ï¿½chec du test 0.2 : L:Animal.vieillir() too Old");
             nT++;
         }
         totalTest++;
@@ -46,7 +46,7 @@ public class TestSecondaire {
         test = new Antilope(1.1);
         test.vieillir();
         if((test.getAge()!=1 || test.getMasse() != 11 || !test.estVivant())){
-            System.out.println("échec du test 0.3 : A:Animal.vieillir() 1 ans");
+            System.out.println("ï¿½chec du test 0.3 : A:Animal.vieillir() 1 ans");
             nT++;
         }
         totalTest++;
@@ -57,7 +57,7 @@ public class TestSecondaire {
         }
         if(test.getAge()!=15 || Math.round(test.getMasse()) != Math.round((Math.pow(1.1,(test.getAge()))*10)) || !test.estVivant()){
             
-            System.out.println("échec du test 0.4 : A:Animal.vieillir() 15 ans");
+            System.out.println("ï¿½chec du test 0.4 : A:Animal.vieillir() 15 ans");
             nT++;
         }
         totalTest++;
@@ -65,7 +65,7 @@ public class TestSecondaire {
         //0.5
         test.vieillir();
         if(test.getAge()!=16 || test.estVivant()){
-            System.out.println("échec du test 0.5 : A:Animal.vieillir() too Old");
+            System.out.println("ï¿½chec du test 0.5 : A:Animal.vieillir() too Old");
             nT++;
         }
         totalTest++;
@@ -79,7 +79,7 @@ public class TestSecondaire {
         Boolean t1 = test.estVivant();
         test.mourir();
         if(test.getMasse() != 18 || test.getAge() !=23 || test.getAgeMax() != 15 || test.estVivant() || !t1 || !test.estProie() || !(test.getAgeMature() == 2)){
-            System.out.println("échec du test 0.6 : mourrir, getMasse, setMasse, getAgeMax, estVivant, mourir, getAge, setAge,setProie, estProie, getAgeMature");
+            System.out.println("ï¿½chec du test 0.6 : mourrir, getMasse, setMasse, getAgeMax, estVivant, mourir, getAge, setAge,setProie, estProie, getAgeMature");
             nT++;
         }
         totalTest++;
@@ -93,7 +93,7 @@ public class TestSecondaire {
         test.vieillir();
         
         if(t1 || !test.estMature()){
-            System.out.println("échec du test 0.7 : estMature");
+            System.out.println("ï¿½chec du test 0.7 : estMature");
             nT++;
         }
         totalTest++;
@@ -118,7 +118,7 @@ public class TestSecondaire {
     pop.vieillir();
     
     if(!t1 || !t2 || pop.getIndividus().get(0).getAge() !=1 || pop.getIndividus().get(0).getMasse() != 11){
-        print("Problème avec la fonction Population.vieillir");
+        print("Problï¿½me avec la fonction Population.vieillir");
         nT++;
     }
     totalTest++;
@@ -132,9 +132,9 @@ public class TestSecondaire {
     pop.vieillir();
     pop.vieillir();
     pop.vieillir();
-    pop.reproduire();
+    pop.reproduire(); System.out.println("preds : " + pop.getNombrePredateurs() + " - proies : " + pop.getNombreProies());
     if(pop.getNombrePredateurs()!=12 || pop.getNombreProies()!=1125){
-        print("Problème avec la fonction Population.reproduire");
+        print("Problï¿½me avec la fonction Population.reproduire");
         nT++;
     }
     totalTest++;
@@ -144,7 +144,7 @@ public class TestSecondaire {
     pop = testV.getSavane();
     pop.chasser();
     if(pop.getNombrePredateurs()!=8 || pop.getNombreProies()!=484){
-        print("Problème avec la fonction Population.chasser");
+        print("Problï¿½me avec la fonction Population.chasser");
         nT++;
     }
     totalTest++;
@@ -153,7 +153,7 @@ public class TestSecondaire {
     pop = testV.getSavane();
     pop.chasser();
     if(pop.getNombrePredateurs()!=50 || pop.getNombreProies()!=400){
-        print("Problème avec la fonction Population.chasser");
+        print("Problï¿½me avec la fonction Population.chasser");
         nT++;
     }
     totalTest++;
