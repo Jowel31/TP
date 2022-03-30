@@ -137,22 +137,22 @@ public class Savane implements TP1Stats {
 	    }
 	}
 	
-	String indice = "ème";
-	if( annee == 1 ) indice = "ière";
+	String indice = "ï¿½me";
+	if( annee == 1 ) indice = "iï¿½re";
 	
         if( show ) {
-	    print( "///////////////////////////// à la fin de la " + annee + indice + " année, nous observons :" );
+	    print( "///////////////////////////// ï¿½ la fin de la " + annee + indice + " annï¿½e, nous observons :" );
             print( nombreLions + " lions total ;" );
             print( nombreVieuxLions + " lions qui vont mourrir de vieillesse ;" );
 	    print( nombreLionsMatures + " lions matures ;" );
             print( nombreJeunesLions + " lions juvenils ;" );
-            print( nombreBebesLions + " bébés lions ;" );
+            print( nombreBebesLions + " bï¿½bï¿½s lions ;" );
             print( masseTotaleLions + " masse en lions ;" );
 	    print( nombreAntilopes + " antilopes total ;" );
             print( nombreVieillesAntilopes + " antilopes qui vont mourrir de vieillesse ;" );
 	    print( nombreAntilopesMatures + " antilopes matures ;" );
             print( nombreJeunesAntilopes + " antilopes juveniles ;" );
-            print( nombreBebesAntilopes + " bébés antilopes ; et" );
+            print( nombreBebesAntilopes + " bï¿½bï¿½s antilopes ; et" );
             print( masseTotaleAntilopes + " masse en antilopes." );
         }
         
@@ -172,4 +172,9 @@ public class Savane implements TP1Stats {
 	    masseTotaleAntilopes };
         return test;
     }
+
+	public Population getSavane() {
+		// TODO Auto-generated method stub
+		return savane;
+	}
 }

@@ -71,7 +71,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		int count = 0;
 
 		for (Animal animal : individus) {
-			
+
 			if (animal.estProie()) count ++;
 		}
 
@@ -145,13 +145,13 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	public void vieillir() {
 
 		herbe.vieillir();
-		
+
 		for (int i = 0; i < individus.size(); i++) {
 			Animal animal = individus.get(i);
 			animal.vieillir();
 			individus.set(i, animal);
 		}
-		
+
 
 		retirerMorts();
 	}
@@ -209,7 +209,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 			individus.set(i, animal); // Mettre a jour l'animal.
 
 		}
-		
+
 		retirerMorts();
 	}
 
@@ -223,28 +223,30 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		Animal bebe;
 
+		ArrayList<Animal> nouveauxNes = new ArrayList<Animal>();
+
 		for (Animal animal : individus) {
 
-			if (animal.estPredateur() && animal.estMature()) {
-				bebe = animal.accoucher();
-				individus.add(bebe);
-				couplesPredateurs --;
+			if (animal.estMature()) {
 
-				if (couplesPredateurs == 0) break;
+				if (animal.estPredateur() && couplesPredateurs > 0 ) {
+					bebe = animal.accoucher();
+					nouveauxNes.add(bebe);
+					couplesPredateurs --;
+
+				} else if (animal.estProie() && couplesProies > 0) {
+
+					bebe = animal.accoucher();
+					nouveauxNes.add(bebe);
+					couplesProies --;
+				}
 			}
 		}
-		for (Animal animal : individus) {
 
-			if (animal.estProie() && animal.estMature()) {
-				bebe = animal.accoucher();
-				individus.add(bebe);
-				couplesProies --;
+		individus.addAll(nouveauxNes);
 
-				if (couplesProies == 0) break;
-			}
-		}
 	}
-	
+
 	// Melange la liste d'individus.
 	@Override
 	public void melanger() { 
@@ -255,9 +257,8 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	// Retire les animaux morts de la liste d'individus.
 	private void retirerMorts() {
 
-		individus.forEach( animal -> { 
-			if (!animal.estVivant()) individus.remove(animal); 
-		});
+		individus.removeIf(animal -> !animal.estVivant());
+
 	}
 
 }
