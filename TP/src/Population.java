@@ -71,10 +71,8 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 		int count = 0;
 
 		for (Animal animal : individus) {
-
-			if (animal.estProie()) { 
-				count ++;
-			}
+			
+			if (animal.estProie()) count ++;
 		}
 
 		return count;
@@ -87,9 +85,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		for( Animal animal : individus ) {
 
-			if (animal.estProie() && animal.estMature()) { 
-				count ++;
-			}
+			if (animal.estProie() && animal.estMature()) count ++;
 		}
 
 		return count;
@@ -102,9 +98,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		for( Animal animal : individus ) {
 
-			if (animal.estPredateur() && animal.estMature()) { 
-				count ++;
-			}
+			if (animal.estPredateur() && animal.estMature()) count ++;
 		}
 
 		return count;
@@ -123,7 +117,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		for (Animal animal : individus) {
 
-			if (animal.estProie()) { masse += animal.getMasse(); }
+			if (animal.estProie()) masse += animal.getMasse();
 		}
 
 		return masse;
@@ -136,7 +130,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 		for (Animal animal : individus) {
 
-			if (animal.estPredateur()) { masse += animal.getMasse(); }
+			if (animal.estPredateur()) masse += animal.getMasse();
 		}
 
 		return masse;
@@ -150,8 +144,14 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	@Override
 	public void vieillir() {
 
-		herbe.vieillir(); 
-		individus.forEach( animal -> { animal.vieillir(); } );
+		herbe.vieillir();
+		
+		for (int i = 0; i < individus.size(); i++) {
+			Animal animal = individus.get(i);
+			animal.vieillir();
+			individus.set(i, animal);
+		}
+		
 
 		retirerMorts();
 	}
@@ -176,7 +176,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 			if (animal.estProie()) { // Manger de l'herbe
 
-				if (masseHerbe >= masseAnimal * 2) {
+				if (masseHerbe >= masseAnimal * 2) { // Assez d'herbe restante
 					masseHerbe -= masseAnimal * 2;
 					animal.manger();
 
@@ -190,7 +190,7 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 
 				for (int j = 0; j < individus.size(); j++) { // Parcourir les animaux a manger
 
-					if (nombreProiesChassables == 0) { animal.mourir(); break; } // toutes les proies ont ete mangees
+					if (nombreProiesChassables == 0) { animal.mourir(); break; } // Toutes les proies ont ete mangees
 
 					proie = individus.get(j);
 
@@ -199,17 +199,17 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 						proie.mourir();
 						nombreProiesChassables --;
 
-						individus.set(j, proie);
+						individus.set(j, proie); // Mettre a jour la proie
 					}
 
-					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // animal nourrit
+					if (masseMangee >= masseAnimal * 2) { animal.manger(); break; } // l'animal a finit de manger
 				}
 			}
 
 			individus.set(i, animal); // Mettre a jour l'animal.
 
 		}
-
+		
 		retirerMorts();
 	}
 
@@ -246,8 +246,6 @@ public class Population implements EcoSysteme, Iterable<Animal> {
 	}
 	
 	// Melange la liste d'individus.
-
-	// Melange la liste d'animaux.
 	@Override
 	public void melanger() { 
 		Collections.shuffle(this.individus, new Random(4));

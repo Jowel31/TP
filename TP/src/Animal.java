@@ -19,20 +19,25 @@
 public class Animal implements ProiePredateur {
 	
 	private int age;
-	private int masse;
-	boolean estVivant;
+	private double masse;
+	private boolean estVivant;
+	private double facteurCroissance;
+	private int AGE_MAX;
+	private int AGE_MATURE;
+	private boolean estProie;
+	private boolean estPredateur;
 	
 	
-	public Animal {
+	public Animal(double facteurCroissance) {
 	}
 		
 		// L'animal prend vie et recoit un age initial et une masse initiale
 		@Override
 		public void naitre() {
 			
-			this.setAge(0);
-			this.setMasse(10);
-			this.estVivant = true;
+			setAge(0);
+			setMasse(10);
+			estVivant = true;
 		}
 		
 		
@@ -40,18 +45,14 @@ public class Animal implements ProiePredateur {
 		@Override
 		public void vieillir() {
 			
-			this.age += 1;
+			age += 1;
 			
-			if (this.age > this.ageMax) {
-				this.mourir();
+			if (age > AGE_MAX) {
+				mourir();
 			}
 			
-			
+			masse *= facteurCroissance;
 		}
-		
-		
-		
-		
 		
 		
 		// L'animal mange
@@ -61,11 +62,7 @@ public class Animal implements ProiePredateur {
 	    	
 	    }
 	    
-	    
-	    
-	    
-	    
-	    
+		
 	    // L'animal donne naissance
 	    @Override
 	    public Animal accoucher() {
@@ -87,14 +84,15 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public void mourir() {
 	    	
-	    	this.estVivant = false;
+	    	estVivant = false;
 	    }
 	    
 	    
+	    @Override
 	    // L'animal est vivant?
 	    public boolean estVivant() {
 	    	
-	    	return this.estVivant;
+	    	return estVivant;
 	    }
 	    
 	    
@@ -102,12 +100,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public boolean estMature() {
 	    	
-	    	if (this.age >= this.ageMature) {
-	    		return true;
-	    		
-	    	} else {
-	    		return false;
-	    	}
+	    	return age >= AGE_MATURE;
 	    }
 	    
 	    
@@ -115,7 +108,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public void setProie( boolean proie ) {
 	    	
-	    	this.estProie = proie;
+	    	estProie = proie;
 	    }
 	    
 	    
@@ -123,7 +116,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public boolean estProie() {
 	    	
-	    	return this.estProie;
+	    	return estProie;
 	    }
 	    
 	    
@@ -131,7 +124,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public void setPredateur( boolean predateur ) {
 	    	
-	    	this.estPredateur = predateur;
+	    	estPredateur = predateur;
 	    }
 	    
 	    
@@ -139,7 +132,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public boolean estPredateur() {
 	    	
-	    	return this.estPredateur;
+	    	return estPredateur;
 	    }
 	    
 	    
@@ -154,7 +147,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public double getMasse() {
 	    	
-	    	return this.masse;
+	    	return masse;
 	    }
 	    
 	    
@@ -169,7 +162,7 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public int getAge() {
 	    	
-	    	return this.age;
+	    	return age;
 	    }
 	    
 	    
@@ -178,14 +171,14 @@ public class Animal implements ProiePredateur {
 	    @Override
 	    public int getAgeMature() {
 	    	
-	    	return this.ageMature;
+	    	return ageMature;
 	    }
 	    
 	    @Override
 	    public int getAgeMax() {
 	    	
-	    	return this.ageMax;
+	    	return AGE_MAX;
 	    }
 	    
-	}
+}
 	
