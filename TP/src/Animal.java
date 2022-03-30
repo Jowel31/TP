@@ -168,6 +168,12 @@ public abstract class Animal implements ProiePredateur {
 	    }
 	    
 	    
+	    // Retourne le facteur de croissance de l'animal
+	    public double getFacteurCroissance() {
+	    	return facteurCroissance;
+	    	
+	    }
+	    
 	    // Ce n'est pas pertinent qu'un animal accouche, car il
 	    // faut creer des objets qui sont soient des antilopes, soient des lions
 	    @Override
