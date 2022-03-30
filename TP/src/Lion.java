@@ -11,31 +11,19 @@
 
 class Lion extends Animal {
 	
-	// Constantes
-	public final static int AGEMAX    = 50;
-	public final static int AGEMATURE = 5;
 	
-	// Variables
-	private double facteurCroissanceLion;
-	
+	public final static int AGEMAX    = 50; // Age maximum avant la mort
+	public final static int AGEMATURE = 5;	// Age minimum pour s'accoupler
 	
 	// Constructeur
 	public Lion( double facteurCroissanceLion ) {
 		
-		super(facteurCroissanceLion, AGEMATURE, AGEMAX);
-		
-		this.facteurCroissanceLion = facteurCroissanceLion;
-		
-		// Un lion est un predateur donc n'est pas une proie dans ce contexte
-		setPredateur(true); setProie(false);
-		
+		super(facteurCroissanceLion, AGEMATURE, AGEMAX); // On initialise l'animal
+		setPredateur(true); setProie(false);             // Le lion est un predateur
 	}
 	
-	// Lorsque la lionne accouche, elle cree un nouvel objet de type Lion
+	// Retourne un bebe Lion
 	@Override
-	public Animal accoucher() {	
-		return new Lion(facteurCroissanceLion);
-	
-	}
+	public Lion accoucher() { return new Lion(getFacteurCroissance()); }
 	
 }

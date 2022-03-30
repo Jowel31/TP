@@ -4,21 +4,13 @@ public class TestSecondaire {
     public static void main(String[] args){
         /*
         if(true){
-<<<<<<< HEAD
-            System.out.println("Échec du test : ");
-=======
             System.out.println("�chec du test : ");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
         */
         System.out.println("////////////////////////////////////////////////////////////////////////////////////////////////////");
-<<<<<<< HEAD
-        System.out.println("Fichier Animal/Lion/Antilope sauf manger() et accoucher(). Il n'y aura pas de test caché pour cette partie. \n");
-=======
         System.out.println("Fichier Animal/Lion/Antilope sauf manger() et accoucher(). Il n'y aura pas de test cach� pour cette partie. \n");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
         int totalTest=0;
         int nT=0;
         //0.0
@@ -26,11 +18,7 @@ public class TestSecondaire {
         Animal test = new Lion(1.1);
         test.vieillir();
         if((test.getAge()!=1 || test.getMasse() != 11 || !test.estVivant())){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.0 : L:Animal.vieillir() 1 ans");
-=======
             System.out.println("�chec du test 0.0 : L:Animal.vieillir() 1 ans");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -40,11 +28,7 @@ public class TestSecondaire {
             test.vieillir();
         }
         if(test.getAge()!=50 || test.getMasse() != (Math.pow(1.1,(50))*10) || !test.estVivant()){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.1 : L:Animal.vieillir() 50 ans");
-=======
             System.out.println("�chec du test 0.1 : L:Animal.vieillir() 50 ans");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -52,11 +36,7 @@ public class TestSecondaire {
         //0.2
         test.vieillir();
         if(test.getAge()!=51 || test.getMasse() == (Math.pow(1.1,(test.getAge()))*10) || test.estVivant()){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.2 : L:Animal.vieillir() too Old");
-=======
             System.out.println("�chec du test 0.2 : L:Animal.vieillir() too Old");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -66,11 +46,7 @@ public class TestSecondaire {
         test = new Antilope(1.1);
         test.vieillir();
         if((test.getAge()!=1 || test.getMasse() != 11 || !test.estVivant())){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.3 : A:Animal.vieillir() 1 ans");
-=======
             System.out.println("�chec du test 0.3 : A:Animal.vieillir() 1 ans");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -81,11 +57,7 @@ public class TestSecondaire {
         }
         if(test.getAge()!=15 || Math.round(test.getMasse()) != Math.round((Math.pow(1.1,(test.getAge()))*10)) || !test.estVivant()){
             
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.4 : A:Animal.vieillir() 15 ans");
-=======
             System.out.println("�chec du test 0.4 : A:Animal.vieillir() 15 ans");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -93,11 +65,7 @@ public class TestSecondaire {
         //0.5
         test.vieillir();
         if(test.getAge()!=16 || test.estVivant()){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.5 : A:Animal.vieillir() too Old");
-=======
             System.out.println("�chec du test 0.5 : A:Animal.vieillir() too Old");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -111,11 +79,7 @@ public class TestSecondaire {
         Boolean t1 = test.estVivant();
         test.mourir();
         if(test.getMasse() != 18 || test.getAge() !=23 || test.getAgeMax() != 15 || test.estVivant() || !t1 || !test.estProie() || !(test.getAgeMature() == 2)){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.6 : mourrir, getMasse, setMasse, getAgeMax, estVivant, mourir, getAge, setAge,setProie, estProie, getAgeMature");
-=======
             System.out.println("�chec du test 0.6 : mourrir, getMasse, setMasse, getAgeMax, estVivant, mourir, getAge, setAge,setProie, estProie, getAgeMature");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -129,11 +93,7 @@ public class TestSecondaire {
         test.vieillir();
         
         if(t1 || !test.estMature()){
-<<<<<<< HEAD
-            System.out.println("Échec du test 0.7 : estMature");
-=======
             System.out.println("�chec du test 0.7 : estMature");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
             nT++;
         }
         totalTest++;
@@ -158,11 +118,7 @@ public class TestSecondaire {
     pop.vieillir();
     
     if(!t1 || !t2 || pop.getIndividus().get(0).getAge() !=1 || pop.getIndividus().get(0).getMasse() != 11){
-<<<<<<< HEAD
-        print("Problème avec la fonction Population.vieillir");
-=======
         print("Probl�me avec la fonction Population.vieillir");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
         nT++;
     }
     totalTest++;
@@ -178,11 +134,7 @@ public class TestSecondaire {
     pop.vieillir();
     pop.reproduire(); System.out.println("preds : " + pop.getNombrePredateurs() + " - proies : " + pop.getNombreProies());
     if(pop.getNombrePredateurs()!=12 || pop.getNombreProies()!=1125){
-<<<<<<< HEAD
-        print("Problème avec la fonction Population.reproduire");
-=======
         print("Probl�me avec la fonction Population.reproduire");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
         nT++;
     }
     totalTest++;
@@ -192,11 +144,7 @@ public class TestSecondaire {
     pop = testV.getSavane();
     pop.chasser();
     if(pop.getNombrePredateurs()!=8 || pop.getNombreProies()!=484){
-<<<<<<< HEAD
-        print("Problème avec la fonction Population.chasser");
-=======
         print("Probl�me avec la fonction Population.chasser");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
         nT++;
     }
     totalTest++;
@@ -205,11 +153,7 @@ public class TestSecondaire {
     pop = testV.getSavane();
     pop.chasser();
     if(pop.getNombrePredateurs()!=50 || pop.getNombreProies()!=400){
-<<<<<<< HEAD
-        print("Problème avec la fonction Population.chasser");
-=======
         print("Probl�me avec la fonction Population.chasser");
->>>>>>> branch 'master' of https://github.com/Jowel31/TP.git
         nT++;
     }
     totalTest++;

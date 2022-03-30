@@ -11,31 +11,20 @@
 
 class Antilope extends Animal {
 	
-	// Constantes
-	public final static int AGEMAX    = 15;
-	public final static int AGEMATURE = 2;
 	
-	// Variables
-	private double facteurCroissanceAntilope;
-	
+	public final static int AGEMAX    = 15; // Age maximum avant la mort
+	public final static int AGEMATURE = 2;	// Age minimum avant de pouvoir s'accoupler
 	
 	// Constructeur
 	public Antilope( double facteurCroissanceAntilope ) {
 		
-		super(facteurCroissanceAntilope, AGEMATURE, AGEMAX);
-		
-		this.facteurCroissanceAntilope = facteurCroissanceAntilope;
-		
-		// Une antilope est une proie donc n'est pas un predateur dans ce contexte
-		setProie(true); setPredateur(false);
-		
+		super(facteurCroissanceAntilope, AGEMATURE, AGEMAX); // On initialise l'animal	
+		setProie(true); setPredateur(false);				 // Antilope est une proie
 	}
 	
-	// Lorsque l'antilope accouche, elle cree un nouvel objet de type Antilope
+	// Retourne un bebe Antilope
 	@Override
-	public Animal accoucher() {
-		return new Antilope(facteurCroissanceAntilope);
-
-	}
+	public Antilope accoucher() { return new Antilope(getFacteurCroissance()); }
+	
 	
 }
